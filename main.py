@@ -26,8 +26,20 @@ for article in soup.find_all('div', class_='article'): #returns a list
 
 '''
 
-## THis chunk takes text from websites  https://www.foxnews.com/
-#source = requests.get('http://coreyms.com').text
-source = requests.get('https://www.foxnews.com').text
+import re  #needed to convert string of words into list of words
+'''
+mystr = 'This is a string, with words!'
+wordList = re.sub("[^\w]", " ",  mystr).split()
+print(wordList)
+'''
+#soup stuff 
+## THis chunk takes text from websites  
+source = requests.get('http://coreyms.com').text
+#source = requests.get('https://www.foxnews.com').text
 soup = BeautifulSoup(source, 'lxml')
-print(soup.prettify())
+string_soup = soup.get_text()  #turns soup object into string
+list_soup = re.sub("[^\w]", " ",  string_soup).split()
+print(list_soup)
+
+
+#print(list_soup)  don't work
