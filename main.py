@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+'''
 with open('simple.html') as html_file:
   soup = BeautifulSoup(html_file, 'lxml')
 
@@ -22,3 +23,11 @@ for article in soup.find_all('div', class_='article'): #returns a list
   print(summary)
 
   print()
+
+'''
+
+## THis chunk takes text from websites  https://www.foxnews.com/
+#source = requests.get('http://coreyms.com').text
+source = requests.get('https://www.foxnews.com').text
+soup = BeautifulSoup(source, 'lxml')
+print(soup.prettify())
