@@ -34,8 +34,14 @@ print(wordList)
 '''
 #soup stuff 
 ## THis chunk takes text from websites  
-source = requests.get('http://coreyms.com').text
+#source = requests.get('http://coreyms.com').text
 #source = requests.get('https://www.foxnews.com').text
+
+#This segment takes user pasted URL
+link = input("Please enter the URL: ")
+source = requests.get(link).text
+
+
 soup = BeautifulSoup(source, 'lxml')
 string_soup = soup.get_text()  #turns soup object into string
 list_soup = re.sub("[^\w]", " ",  string_soup).split()
